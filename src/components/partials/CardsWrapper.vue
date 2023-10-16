@@ -42,8 +42,8 @@ export default {
   h1 {
     display: block;
   }
-  .row {
-  display: flex;
-  }
+//  .row {
+//  display: flex;
+//  }
 }
 </style>
