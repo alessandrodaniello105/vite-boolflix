@@ -6,15 +6,24 @@ export default {
   name: 'SearchBar',
   data() {
     return {
-      textToSearch: null
+      textToSearch: ""
     }
   },
   methods: {
     searchText() {
-      store.textToSearch = this.textToSearch;
-      console.log('textToSearch -->', store.textToSearch)
-      store.moviesList = [];
-      this.getAPI(store.apiURL);
+      if (this.textToSearch == "") {
+        alert('inserisci almeno tre lettere')
+      } else if (this.textToSearch.length < 3) {
+        alert('inserisci almeno tre lettere')
+      } else {
+        store.textToSearch = this.textToSearch;
+        console.log('textToSearch -->', store.textToSearch);
+        store.moviesList = [];
+        this.getAPI(store.movieapiURL);
+      }
+      
+      
+      
     },
     getAPI(param) {
       axios.get(param, {
@@ -25,16 +34,16 @@ export default {
       })
       .then( res => {
         // console.log(res.data.results)
-        store.moviesList = res.data.results
-        console.log(store.moviesList)
+        store.moviesList = res.data.results;
+        store.totalResults = res.data.total_results;
       })
       .catch( err => {
-        console.log(err.code)
+        console.log(err.code);
       })
     }
   },
   mounted() {
-    console.log('mounted tTS -->', store.textToSearch)
+    console.log('mounted tTS -->', store.textToSearch);
   }
 }
 </script>

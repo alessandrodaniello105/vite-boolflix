@@ -18,10 +18,5 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.container {
-  max-width: 95vw;
-  margin: 0 auto;
 
-  border: 1px solid black;
-}
 </style>

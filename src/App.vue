@@ -34,7 +34,7 @@ export default {
     }
   },
   created() {
-    this.getAPI(store.apiURL)
+    this.getAPI(store.movieapiURL)
   }
 }
 </script>
@@ -43,9 +43,11 @@ export default {
   
   <Header />
   
+
   <Main
-    :testoprova="store.apiURL"
+    :testoprova="store.movieapiURL"
     :movieList="store.moviesList"
+    :isFound="store.totalResults == 0"
   />
 
 
