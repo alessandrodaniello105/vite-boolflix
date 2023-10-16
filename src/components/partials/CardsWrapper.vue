@@ -28,11 +28,22 @@ export default {
   <div class="container">
     <h1>{{sectionTitle}}</h1>
 
-    <Card v-for="element in list" :key="element.id" :cover="verifyPath(element)" :element="element" />
+    <div class="row">
+      <Card v-for="element in list" :key="element.id" :cover="verifyPath(element)" :element="element" />
+    </div>
 
   </div>
 </template>
 
 <style lang="scss" scoped>
 
+.container {
+  overflow: hidden;
+  h1 {
+    display: block;
+  }
+  .row {
+  display: flex;
+  }
+}
 </style>

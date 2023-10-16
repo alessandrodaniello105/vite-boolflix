@@ -1,6 +1,6 @@
 <script>
 import CardsWrapper from './partials/CardsWrapper.vue';
-
+W
 export default {
   name: 'Main',
   props: {
@@ -12,17 +12,17 @@ export default {
     CardsWrapper
   }
 }
+
 </script>
 
 <template>
   <main>
-    <h1>{{testoprova}}</h1>
-
     
     <CardsWrapper :list="movieList" :sectionTitle="'Movies'" />
     <div v-if="isFound" class="message container">
       <h2>No results found</h2>
     </div>
+
 
   </main>
 </template>

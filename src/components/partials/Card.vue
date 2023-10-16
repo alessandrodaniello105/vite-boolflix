@@ -33,11 +33,26 @@ export default {
 
 <style lang="scss" scoped>
 .col {
+  width: 300px;
+  margin: 0 10px;
+
+
   .card {
+    position: relative;
     color: white;
+    width: 100%;
+    text-align: center;
+
+    &:hover .img-box {
+      filter: blur(2px);
+    }
+    &:hover .text-box {
+      z-index: 1;
+    }
     .img-box {
-      width: 300px;
       position: relative;
+      width: 100%;
+
       span {
         display: inline-block;
         position: absolute;
@@ -45,6 +60,16 @@ export default {
         left: 50%;
         transform: translate(-50%, -50%);
       }
+    }
+    .text-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      background-color: rgba(#000000, .6);
+      width: 200px;
+      border-radius: 3px;
     }
   }
 }

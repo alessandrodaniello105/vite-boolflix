@@ -42,7 +42,7 @@ export default {
 <template>
   
   <Header />
-  
+
 
   <Main
     :testoprova="store.movieapiURL"
