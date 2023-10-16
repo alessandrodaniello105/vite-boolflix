@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'CardWrapper',
+  name: 'CardsWrapper',
   props: {
     list: Array,
     sectionTitle: String
