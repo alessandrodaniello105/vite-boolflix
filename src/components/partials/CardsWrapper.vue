@@ -1,19 +1,35 @@
 <script>
+import Card from './Card.vue';
+
 export default {
   name: 'CardsWrapper',
+  components: {
+    Card
+  },
   props: {
     list: Array,
     sectionTitle: String
   },
+  methods: {
+    verifyPath(element) {
+      if (element.backdrop_path == null) {
+        return element.poster_path
+      } else if (element.backdrop_path == null && element.poster_path) {
+        
+      } else {
+        return element.backdrop_path
+      }
+    }
+  }
 }
 </script>
 
 <template>
   <div class="container">
     <h1>{{sectionTitle}}</h1>
-    <ul>
-      <li v-for="element in list" :key="element.id">{{element.original_title}}</li>
-    </ul>
+
+    <Card v-for="element in list" :key="element.id" :cover="verifyPath(element)" :element="element" />
+
   </div>
 </template>
 
