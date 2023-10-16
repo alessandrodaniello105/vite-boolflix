@@ -24,7 +24,12 @@ export default {
         }
       })
       .then( res => {
-        console.log(res.data.results)
+        // console.log(res.data.results)
+        store.moviesList = res.data.results
+        console.log(store.moviesList)
+      })
+      .catch( err => {
+        console.log(err.code)
       })
     }
   },
@@ -38,7 +43,7 @@ export default {
   
   <Header />
   
-  <Main :testoprova="store.apiURL" />
+  <Main :testoprova="store.apiURL" :list="store.moviesList" />
 
 
 </template>
