@@ -1,6 +1,6 @@
 <script>
 import CardsWrapper from './partials/CardsWrapper.vue';
-W
+
 export default {
   name: 'Main',
   props: {
