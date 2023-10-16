@@ -1,9 +1,16 @@
 <script>
+import CardWrapper from './partials/CardWrapper.vue';
+
+
+
 export default {
   name: 'Main',
   props: {
     testoprova: String,
-    list: Array,
+    movieList: Array
+  },
+  components: {
+    CardWrapper
   }
 }
 </script>
@@ -11,9 +18,9 @@ export default {
 <template>
   <main>
     <h1>{{testoprova}}</h1>
-    <ul>
-      <li v-for="element in list" :key="element.id">{{element.original_title}}</li>
-    </ul>
+
+    <CardWrapper :list="movieList" :sectionTitle="'Movies'" />
+
   </main>
 </template>
 
@@ -22,6 +29,7 @@ export default {
 
 main {
   color: $font-color;
+  background-color: orange;
 }
 
 </style>

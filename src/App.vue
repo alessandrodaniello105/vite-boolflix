@@ -43,7 +43,10 @@ export default {
   
   <Header />
   
-  <Main :testoprova="store.apiURL" :list="store.moviesList" />
+  <Main
+    :testoprova="store.apiURL"
+    :movieList="store.moviesList"
+  />
 
 
 </template>
