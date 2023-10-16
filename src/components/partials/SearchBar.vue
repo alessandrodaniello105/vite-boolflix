@@ -1,13 +1,54 @@
 <script>
+import { store } from '../../data/store';
+import axios from 'axios';
+
 export default {
-  name: 'SearchBar'
+  name: 'SearchBar',
+  data() {
+    return {
+      textToSearch: null
+    }
+  },
+  methods: {
+    searchText() {
+      store.textToSearch = this.textToSearch;
+      console.log('textToSearch -->', store.textToSearch)
+      store.moviesList = [];
+      this.getAPI(store.apiURL);
+    },
+    getAPI(param) {
+      axios.get(param, {
+        params: {
+          query: store.textToSearch,
+          language: 'it-IT'
+        }
+      })
+      .then( res => {
+        // console.log(res.data.results)
+        store.moviesList = res.data.results
+        console.log(store.moviesList)
+      })
+      .catch( err => {
+        console.log(err.code)
+      })
+    }
+  },
+  mounted() {
+    console.log('mounted tTS -->', store.textToSearch)
+  }
 }
 </script>
 
 <template>
   <div class="container">
-    <input type="text" name="search" id="search" placeholder="Inserisci il titolo che vuoi cercare">
-    <button>Cerca</button>
+    <input
+      v-model="textToSearch"
+      type="text"
+      name="search"
+      id="search"
+      @keyup.enter="searchText"
+      placeholder="Inserisci il titolo che vuoi cercare">
+    <button @click="searchText">Cerca</button>
   </div>
 </template>
 

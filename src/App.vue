@@ -19,7 +19,7 @@ export default {
     getAPI(param) {
       axios.get(param, {
         params: {
-          query: 'Barbie',
+          query: store.textToSearch,
           language: 'it-IT'
         }
       })

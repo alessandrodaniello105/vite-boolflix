@@ -28,7 +28,7 @@ export default {
 @use '../scss/partials/vars' as *;
 
 main {
-  color: $font-color;
+  color: white;
   background-color: orange;
 }
 
