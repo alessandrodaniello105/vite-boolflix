@@ -32,9 +32,6 @@ export default {
         console.log(err.code)
       })
     }
-  },
-  created() {
-    this.getAPI(store.movieapiURL)
   }
 }
 </script>

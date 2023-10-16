@@ -1,6 +1,8 @@
 <script>
 import CardsWrapper from './partials/CardsWrapper.vue';
 
+import { store } from '../data/store';
+
 export default {
   name: 'Main',
   props: {
@@ -10,6 +12,14 @@ export default {
   },
   components: {
     CardsWrapper
+  },
+  data() {
+    return {
+      store
+    }
+  },
+  created() {
+    console.log(store.moviesList)
   }
 }
 
@@ -18,7 +28,7 @@ export default {
 <template>
   <main>
     
-    <CardsWrapper :list="movieList" :sectionTitle="'Movies'" />
+    <CardsWrapper v-if="!store.moviesList == []" :list="movieList" :sectionTitle="'Movies'" />
     <div v-if="isFound" class="message container">
       <h2>No results found</h2>
     </div>
