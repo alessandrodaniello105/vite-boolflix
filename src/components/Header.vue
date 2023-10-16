@@ -1,11 +1,21 @@
 <script>
+import SearchBar from './partials/SearchBar.vue'
+
+
 export default {
-  name: 'Header'
+  name: 'Header',
+  components: {
+    SearchBar
+  }
 }
 </script>
 
 <template>
-  <header>HEADER</header>
+  <header>
+
+    <SearchBar />
+
+  </header>
 </template>
 
 <style lang="scss" scoped>
@@ -13,6 +23,8 @@ export default {
 
 header {
   color: $font-color;
+  background-color: black;
+  min-height: $h-height;
 }
 
 </style>

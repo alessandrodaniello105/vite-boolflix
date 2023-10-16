@@ -1,5 +1,5 @@
 <script>
-import CardWrapper from './partials/CardWrapper.vue';
+import CardsWrapper from './partials/CardsWrapper.vue';
 
 
 
@@ -10,7 +10,7 @@ export default {
     movieList: Array
   },
   components: {
-    CardWrapper
+    CardsWrapper
   }
 }
 </script>
@@ -19,7 +19,7 @@ export default {
   <main>
     <h1>{{testoprova}}</h1>
 
-    <CardWrapper :list="movieList" :sectionTitle="'Movies'" />
+    <CardsWrapper :list="movieList" :sectionTitle="'Movies'" />
 
   </main>
 </template>
