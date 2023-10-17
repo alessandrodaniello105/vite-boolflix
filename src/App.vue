@@ -14,25 +14,8 @@ export default {
     return {
       store
     }
-  },
-  methods: {
-    getAPI(param) {
-      axios.get(param, {
-        params: {
-          query: store.textToSearch,
-          language: 'it-IT'
-        }
-      })
-      .then( res => {
-        // console.log(res.data.results)
-        store.moviesList = res.data.results
-        console.log(store.moviesList)
-      })
-      .catch( err => {
-        console.log(err.code)
-      })
-    }
   }
+  
 }
 </script>
 
@@ -43,7 +26,7 @@ export default {
 
   <Main
     :testoprova="store.movieapiURL"
-    :movieList="store.moviesList"
+    :moviesList="store.moviesList"
     :isFound="store.totalResults == 0"
   />
 
