@@ -5,10 +5,10 @@ export const store = reactive({
   tvsapiURL: ' https://api.themoviedb.org/3/search/tv',  
   apiParams: {
     api_key: '878007cbe1145f59af923c1e32e787a7',
-    query: "",
+    query: "barbie",
     language: 'it-IT'
   },
-  movie: [],
-  tv: [],
+  movie: null,
+  tv: null,
   totalResults: null
 })

@@ -38,11 +38,13 @@ export default {
 <style lang="scss" scoped>
 
 .container {
-  overflow: hidden;
+  // overflow: hidden;
   h1 {
     display: block;
   }
   .row {
+    display: flex;
+    flex-wrap: wrap;
     margin: 20px 0;
   }
 

@@ -32,9 +32,24 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
+@keyframes testAnim {
+  0% {
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 100%);
+    
+  }
+  100% {
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%, 50%);
+  }
+}
 .col {
   width: 300px;
-  margin: 0 10px;
+  height: 169px;
+  margin: 10px;
 
 
   .card {
@@ -42,13 +57,17 @@ export default {
     color: white;
     width: 100%;
     text-align: center;
+    overflow: hidden;
 
     &:hover .img-box {
       filter: blur(2px);
     }
     &:hover .text-box {
       z-index: 1;
+      animation-name: testAnim;
+      animation-duration: .5s;
     }
+    
     .img-box {
       position: relative;
       width: 100%;
@@ -63,13 +82,19 @@ export default {
     }
     .text-box {
       position: absolute;
-      top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      bottom: 50%;
+      transform: translate(-50%, 50%);
       z-index: -1;
       background-color: rgba(#000000, .6);
-      width: 200px;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
       border-radius: 3px;
+      text-align: left;
+      p {
+        margin: 5px 0;
+      }
     }
   }
 }

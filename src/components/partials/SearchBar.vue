@@ -46,6 +46,8 @@ export default {
 
   mounted() {
     console.log('mounted tTS -->', store.apiParams.query);
+    this.getAPI('movie');
+    this.getAPI('tv');
   }
 
 }
