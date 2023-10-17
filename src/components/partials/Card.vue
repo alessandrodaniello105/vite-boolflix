@@ -21,8 +21,8 @@ export default {
       </div>
 
       <div class="text-box">
-        <p>Titolo: {{element.name}}</p>
-        <p>Titolo originale: {{element.original_title}}</p>
+        <p>Titolo: {{element.title || element.name}}</p>
+        <p>Titolo originale: {{element.original_title || element.original_name}}</p>
         <p>Lingua: {{element.original_language}}</p>
         <p>Rating: {{element.vote_average}}</p>
       </div>

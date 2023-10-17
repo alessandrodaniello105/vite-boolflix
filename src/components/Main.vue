@@ -20,7 +20,7 @@ export default {
     }
   },
   created() {
-    console.log(store.moviesList)
+    console.log(store.movie)
   }
 }
 
@@ -34,8 +34,8 @@ export default {
     </div>
 
     <div v-else>
-      <CardsWrapper v-if="!store.moviesList == []" :list="moviesList" :sectionTitle="'Movies'" />
-      <CardsWrapper v-if="!store.tvsList == []" :list="tvsList" :sectionTitle="'TVs series'" />
+      <CardsWrapper v-if="!store.movie == []" :list="store.movie" :sectionTitle="'Movies'" />
+      <CardsWrapper v-if="!store.tv == []" :list="store.tv" :sectionTitle="'TVs series'" />
     </div>
 
 

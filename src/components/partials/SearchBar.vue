@@ -18,25 +18,23 @@ export default {
       } else if (this.textToSearch.length < 3) {
         alert('inserisci almeno tre lettere')
       } else {
-        store.textToSearch = this.textToSearch;
-        console.log('textToSearch -->', store.textToSearch);
-        store.moviesList = [];
-        this.getAPI(store.movieapiURL);
-        store.tvsList = [];
-        this.getAPI(store.tvsapiURL);
+        store.apiParams.query = this.textToSearch;
+        
+        store.movie = [];
+        store.tv = [];
+        this.getAPI('movie');
+        this.getAPI('tv');
+        
       }
     },
 
-    getAPI(param) {
-      axios.get(param, {
-        params: {
-          query: store.textToSearch,
-          language: 'it-IT'
-        }
+    getAPI(type) {
+      axios.get(store.movieapiURL + type, {
+        params: store.apiParams
       })
       .then( res => {
         // console.log(res.data.results)
-        store.moviesList = res.data.results;
+        store[type] = res.data.results;
         store.totalResults = res.data.total_results;
       })
       .catch( err => {
@@ -47,7 +45,7 @@ export default {
   },
 
   mounted() {
-    console.log('mounted tTS -->', store.textToSearch);
+    console.log('mounted tTS -->', store.apiParams.query);
   }
 
 }
