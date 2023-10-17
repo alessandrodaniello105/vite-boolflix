@@ -26,8 +26,9 @@ export default {
 
   <Main
     :testoprova="store.movieapiURL"
-    :moviesList="store.moviesList"
-    :isFound="store.totalResults == 0"
+    :moviesList="store.movie"
+    :tvsList="store.tv"
+    :isNotFound="store.totalResults == 0"
   />
 
 

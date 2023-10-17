@@ -9,14 +9,20 @@ export default {
     testoprova: String,
     moviesList: Array,
     tvsList: Array,
-    isFound: Boolean
+    isNotFound: Boolean
   },
   components: {
     CardsWrapper
   },
   data() {
     return {
-      store
+      store,
+      message: ''
+    }
+  },
+  methods: {
+    isEmpty(list) {
+      this.message = `${store.apiParams.query} in ${list} non ha fornito nessun risultato`;
     }
   },
   created() {
@@ -29,13 +35,13 @@ export default {
 <template>
   <main>
     
-    <div v-if="isFound" class="message container">
-      <h2>No results found</h2>
+    <div v-if="isNotFound" class="message container">
+      <h2>{{ message }}</h2>
     </div>
 
     <div v-else>
-      <CardsWrapper v-if="!store.movie == []" :list="store.movie" :sectionTitle="'Movies'" />
-      <CardsWrapper v-if="!store.tv == []" :list="store.tv" :sectionTitle="'TVs series'" />
+      <CardsWrapper v-if="!isEmpty(moviesList)" :list="moviesList" :sectionTitle="'Movies'" />
+      <CardsWrapper v-if="!isEmpty(tvsList)" :list="tvsList" :sectionTitle="'TVs series'" />
     </div>
 
 
