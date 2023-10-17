@@ -9,7 +9,9 @@ export default {
       textToSearch: ""
     }
   },
+
   methods: {
+
     searchText() {
       if (this.textToSearch == "") {
         alert('inserisci almeno tre lettere')
@@ -20,11 +22,11 @@ export default {
         console.log('textToSearch -->', store.textToSearch);
         store.moviesList = [];
         this.getAPI(store.movieapiURL);
+        store.tvsList = [];
+        this.getAPI(store.tvsapiURL);
       }
-      
-      
-      
     },
+
     getAPI(param) {
       axios.get(param, {
         params: {
@@ -41,10 +43,13 @@ export default {
         console.log(err.code);
       })
     }
+
   },
+
   mounted() {
     console.log('mounted tTS -->', store.textToSearch);
   }
+
 }
 </script>
 
@@ -69,7 +74,8 @@ export default {
   justify-content: flex-end;
   align-items: center;
   height: $h-height;
-
+  width: fit-content;
+  float: right;
   input {
     height: 30px;
     width: 250px;

@@ -7,7 +7,8 @@ export default {
   name: 'Main',
   props: {
     testoprova: String,
-    movieList: Array,
+    moviesList: Array,
+    tvsList: Array,
     isFound: Boolean
   },
   components: {
@@ -28,9 +29,13 @@ export default {
 <template>
   <main>
     
-    <CardsWrapper v-if="!store.moviesList == []" :list="movieList" :sectionTitle="'Movies'" />
     <div v-if="isFound" class="message container">
       <h2>No results found</h2>
+    </div>
+
+    <div v-else>
+      <CardsWrapper v-if="!store.moviesList == []" :list="moviesList" :sectionTitle="'Movies'" />
+      <CardsWrapper v-if="!store.tvsList == []" :list="tvsList" :sectionTitle="'TVs series'" />
     </div>
 
 
@@ -41,8 +46,8 @@ export default {
 @use '../scss/partials/vars' as *;
 
 main {
-  color: white;
-  background-color: orange;
+  color: $font-color;
+  background-color: $primary-color;
 }
 
 </style>

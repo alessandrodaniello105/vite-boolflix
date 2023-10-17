@@ -42,6 +42,10 @@ export default {
   h1 {
     display: block;
   }
+  .row {
+    margin: 20px 0;
+  }
+
 //  .row {
 //  display: flex;
 //  }
