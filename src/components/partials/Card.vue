@@ -14,16 +14,16 @@ export default {
 
       <div class="img-box">
 
+        <span v-if="cover == null || cover == undefined"> <strong>{{element.title}}</strong></span>
         <img :src="`https://image.tmdb.org/t/p/w300${cover}`" alt="">
 
-        <span v-if="cover == null || cover == undefined"> <strong>{{element.title}}</strong></span>
         
       </div>
 
       <div class="text-box">
         <p>Titolo: {{element.title || element.name}}</p>
         <p>Titolo originale: {{element.original_title || element.original_name}}</p>
-        <p>Lingua: {{element.original_language}}</p>
+        <p>Lingua: <img :src="`/${element.original_language}.png`" :alt="element.original_language"></p>
         <p>Rating: {{element.vote_average}}</p>
       </div>
       
@@ -33,7 +33,7 @@ export default {
 
 <style lang="scss" scoped>
 
-@keyframes testAnim {
+@keyframes startAnim {
   0% {
     left: 50%;
     bottom: 0;
@@ -45,6 +45,8 @@ export default {
     bottom: 50%;
     transform: translate(-50%, 50%);
   }
+
+  
 }
 .col {
   width: 300px;
@@ -92,6 +94,13 @@ export default {
       padding: 20px;
       border-radius: 3px;
       text-align: left;
+      img {
+        width: 25px;
+        aspect-ratio: 16 / 9;
+        vertical-align: middle;
+        object-fit: cover;
+        background-color: transparent;
+      }
       p {
         margin: 5px 0;
       }
