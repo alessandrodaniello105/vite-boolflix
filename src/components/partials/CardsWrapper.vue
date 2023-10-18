@@ -44,6 +44,7 @@ export default {
 <style lang="scss" scoped>
 
 .container {
+  margin: 20px auto;
   // overflow: hidden;
   h1 {
     display: block;
