@@ -10,5 +10,7 @@ export const store = reactive({
   },
   movie: null,
   tv: null,
-  totalResults: null
+  totalResults: null,
+  distancetest: '45' + 'px'
+
 })

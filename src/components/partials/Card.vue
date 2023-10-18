@@ -1,6 +1,11 @@
 <script>
+import Stars from './Stars.vue';
+
 export default {
   name: 'Card',
+  components: {
+    Stars
+  },
   props: {
     cover: String,
     element: Object
@@ -13,9 +18,11 @@ export default {
       ]
     }
   },
-  methods: {
-
-  }
+  computed: {
+    rating() {
+      return (this.element.vote_average / 2).toFixed(2);
+    }
+  },
 }
 </script>
 
@@ -39,7 +46,8 @@ export default {
           <img v-if="flags.includes(element.original_language)" :src="`/${element.original_language}.png`" :alt="element.original_language" />
           <span v-else>{{ element.original_language }}</span>
         </p>
-        <p>Rating: {{element.vote_average}}</p>
+        <p>Rating: {{rating}}</p>
+        <p> <Stars :vote="element.vote_average"/> </p>
       </div>
       
     </div>
@@ -82,7 +90,6 @@ export default {
     }
     &:hover .text-box {
       z-index: 1;
-      
       transform: translate(-50%, 50%);
     }
     
@@ -100,6 +107,8 @@ export default {
         transform: translate(-50%, -50%);
       }
     }
+
+
     .text-box {
       position: absolute;
       left: 50%;
