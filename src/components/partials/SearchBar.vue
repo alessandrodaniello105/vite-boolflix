@@ -6,7 +6,8 @@ export default {
   name: 'SearchBar',
   data() {
     return {
-      textToSearch: ""
+      textToSearch: "",
+      formatToSearch: "All"
     }
   },
 
@@ -22,8 +23,13 @@ export default {
         
         store.movie = [];
         store.tv = [];
-        this.getAPI('movie');
-        this.getAPI('tv');
+        if (this.formatToSearch == 'All') {
+          this.getAPI('movie');
+          this.getAPI('tv');
+        } else {
+          this.getAPI(this.formatToSearch);
+        }
+
         
       }
     },
@@ -46,8 +52,9 @@ export default {
 
   mounted() {
     console.log('mounted tTS -->', store.apiParams.query);
-    this.getAPI('movie');
-    this.getAPI('tv');
+    //this.getAPI('movie');
+    //this.getAPI('tv');
+    console.log('select', this.formatToSearch)
   }
 
 }
@@ -61,8 +68,17 @@ export default {
       name="search"
       id="search"
       @keyup.enter="searchText"
-      placeholder="Inserisci il titolo che vuoi cercare">
+      placeholder="Inserisci il titolo che vuoi cercare"
+    >
+
+    <select @change="console.log(formatToSearch)" v-model="formatToSearch">
+      <option>All</option>
+      <option value="movie">Movie</option>
+      <option value="tv">tv</option>
+    </select>
+    
     <button @click="searchText">Cerca</button>
+  
   </div>
 </template>
 

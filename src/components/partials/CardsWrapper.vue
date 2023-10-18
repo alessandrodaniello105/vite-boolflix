@@ -14,8 +14,8 @@ export default {
     verifyPath(element) {
       if (element.backdrop_path == null) {
         return element.poster_path
-      } else if (element.backdrop_path == null && element.poster_path) {
-        
+      } else if (element.backdrop_path == null && element.poster_path == null) {
+        return 'no image'
       } else {
         return element.backdrop_path
       }
