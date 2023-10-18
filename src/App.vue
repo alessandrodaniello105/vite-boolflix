@@ -36,7 +36,7 @@ export default {
   <div class="main-wrapper">
     <Header />
 
-    <Jumperone v-if="store.isSelected" :cover="verifyPath(store.selectedCard)" :card="store.selectedCard" @alfonso="store.isSelected = false" />
+    <Jumperone v-if="store.isSelected" :cover="verifyPath(store.selectedCard)" :card="store.selectedCard" @closeCard="store.isSelected = false" />
   
     <Main
       :moviesList="store.movie"
