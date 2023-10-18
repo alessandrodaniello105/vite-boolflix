@@ -4,6 +4,17 @@ export default {
   props: {
     cover: String,
     element: Object
+  },
+  data() {
+    return {
+      flags: [
+        'en',
+        'it'
+      ]
+    }
+  },
+  methods: {
+
   }
 }
 </script>
@@ -14,8 +25,8 @@ export default {
 
       <div class="img-box">
 
-        <span v-if="cover == null || cover == undefined"> <strong>{{element.title}}</strong></span>
-        <img :src="`https://image.tmdb.org/t/p/w300${cover}`" alt="">
+        <span v-if="cover == null || cover == undefined"> <strong>{{element.title || element.name}}</strong></span>
+        <img v-else :src="`https://image.tmdb.org/t/p/w300${cover}`" :alt="element.title || element.name" >
 
         
       </div>
@@ -23,7 +34,11 @@ export default {
       <div class="text-box">
         <p>Titolo: {{element.title || element.name}}</p>
         <p>Titolo originale: {{element.original_title || element.original_name}}</p>
-        <p>Lingua: <img :src="`/${element.original_language}.png`" :alt="element.original_language"></p>
+        <p>
+          Lingua:
+          <img v-if="flags.includes(element.original_language)" :src="`/${element.original_language}.png`" :alt="element.original_language" />
+          <span v-else>{{ element.original_language }}</span>
+        </p>
         <p>Rating: {{element.vote_average}}</p>
       </div>
       
@@ -49,31 +64,34 @@ export default {
   
 }
 .col {
-  width: 300px;
-  height: 169px;
+  height: 170px;
+  aspect-ratio: 16 / 9;
   margin: 10px;
 
 
   .card {
     position: relative;
     color: white;
-    width: 100%;
+    height: 100%;
     text-align: center;
     overflow: hidden;
+    transition: all .3s linear;
 
     &:hover .img-box {
       filter: blur(2px);
     }
     &:hover .text-box {
       z-index: 1;
-      animation-name: testAnim;
-      animation-duration: .5s;
+      
+      transform: translate(-50%, 50%);
     }
     
     .img-box {
       position: relative;
-      width: 100%;
-
+      height: 170px;
+      aspect-ratio: 16 / 9;
+      background-color: #000000;
+      
       span {
         display: inline-block;
         position: absolute;
@@ -90,10 +108,12 @@ export default {
       z-index: -1;
       background-color: rgba(#000000, .6);
       width: 100%;
-      height: 100%;
+      aspect-ratio: 16 / 9;
       padding: 20px;
       border-radius: 3px;
       text-align: left;
+      transition: transform .3s ease-in-out 0s;
+
       img {
         width: 25px;
         aspect-ratio: 16 / 9;
