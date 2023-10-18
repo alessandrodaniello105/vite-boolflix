@@ -4,11 +4,13 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import Card from './Card.vue';
 
 
+
 import { Pagination, Mousewheel } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/mousewheel';
+import { store } from '../../data/store';
 
 export default {
  name: 'SwiperT',
@@ -33,6 +35,11 @@ export default {
       }
     }
   },
+  data() {
+    return {
+      store
+    }
+  },
   setup() {
     return {
       modules: [Pagination, Mousewheel]
@@ -53,7 +60,7 @@ export default {
     :modules="modules"
     class="mySwiper"
   >
-    <swiper-slide v-for="element in list" :key="element.id" > <Card :element="element" :cover="verifyPath(element)" /> </swiper-slide>
+    <swiper-slide v-for="element in list" :key="element.id" > <Card @click="store.selectedCard = element, store.isSelected = true" :element="element" :cover="verifyPath(element)" /> </swiper-slide>
   </swiper>
   
 </template>

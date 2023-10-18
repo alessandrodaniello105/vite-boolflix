@@ -1,7 +1,7 @@
 <script>
+import { store } from '../../data/store';
 import Card from './Card.vue';
 import SwiperT from './SwiperT.vue';
-
 
 export default {
   name: 'CardsWrapper',
@@ -11,10 +11,19 @@ export default {
   },
   props: {
     list: Array,
-    sectionTitle: String
+    sectionTitle: String,
+    element: Object
+  },
+  data() {
+    return {
+      store
+    }
   },
   methods: {
-
+    testFunction() {
+      store.selectedCard = this
+      console.log(store.selectedCard)
+    }
   }
 }
 </script>
@@ -23,7 +32,7 @@ export default {
   <div class="container">
     <h1>{{sectionTitle}}</h1>
 
-    <SwiperT  :element="element" :list="list" />
+    <SwiperT @testObj="console.log(element.id)" :list="list" />
 
     <!-- <div class="row">
       <Card v-for="element in list" :key="element.id" :cover="verifyPath(element)" :element="element" />

@@ -13,6 +13,12 @@ export default {
 
   methods: {
 
+    reset() {
+      store.isSelected = false;
+      store.movie = [];
+      store.tv = [];
+    },
+
     searchText() {
       if (this.textToSearch == "") {
         alert('inserisci almeno tre lettere')
@@ -21,8 +27,8 @@ export default {
       } else {
         store.apiParams.query = this.textToSearch;
         
-        store.movie = [];
-        store.tv = [];
+        this.reset();
+
         if (this.formatToSearch == 'All') {
           this.getAPI('movie');
           this.getAPI('tv');

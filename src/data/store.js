@@ -11,6 +11,8 @@ export const store = reactive({
   movie: null,
   tv: null,
   totalResults: null,
-  distancetest: '45' + 'px'
-
+  distancetest: '45' + 'px',
+  isSelected: false,
+  selectedCard: {},
+  selectedID: null
 })

@@ -39,9 +39,11 @@ export default {
       <h2>{{ message }}</h2>
     </div>
 
+
+
     <div v-else>
       <CardsWrapper v-if="!isEmpty(moviesList)" :list="moviesList" :sectionTitle="'Movies'" />
-      <CardsWrapper v-if="store.totalResults !== 0 " :list="tvsList" :sectionTitle="'TVs series'" />
+      <CardsWrapper v-if="store.totalResults !== 0" :list="tvsList" :sectionTitle="'TVs series'" />
     </div>
 
 
@@ -53,7 +55,6 @@ export default {
 
 main {
   color: $font-color;
-  background-color: $primary-color;
 }
 
 </style>

@@ -39,15 +39,21 @@ export default {
       </div>
 
       <div class="text-box">
-        <p>Titolo: {{element.title || element.name}}</p>
-        <p>Titolo originale: {{element.original_title || element.original_name}}</p>
+        
         <p>
-          Lingua:
+          <strong>Titolo:</strong> {{element.title || element.name}}
+        </p>
+
+        <p v-if="element.original_title !== element.title || element.original_name !== element.name"><strong>Titolo originale:</strong> {{element.original_title || element.original_name}}</p>
+        
+        <p>
+          <strong>Lingua:</strong>
           <img v-if="flags.includes(element.original_language)" :src="`/${element.original_language}.png`" :alt="element.original_language" />
           <span v-else>{{ element.original_language }}</span>
         </p>
-        <p>Rating: {{rating}}</p>
-        <p> <Stars :vote="element.vote_average"/> </p>
+
+        <p class="rating"><strong>Rating:</strong> <Stars :vote="element.vote_average"/></p>
+
       </div>
       
     </div>
@@ -114,6 +120,10 @@ export default {
       left: 50%;
       bottom: 50%;
       transform: translate(-50%, 50%);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
       z-index: -1;
       background-color: rgba(#000000, .6);
       width: 100%;
@@ -130,8 +140,9 @@ export default {
         object-fit: cover;
         background-color: transparent;
       }
-      p {
-        margin: 5px 0;
+
+      .rating {
+        display: flex;
       }
     }
   }
