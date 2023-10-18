@@ -14,5 +14,6 @@ export const store = reactive({
   distancetest: '45' + 'px',
   isSelected: false,
   selectedCard: {},
-  selectedID: null
+  selectedID: null,
+  isStart: true
 })

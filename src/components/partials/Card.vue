@@ -52,7 +52,7 @@ export default {
           <span v-else>{{ element.original_language }}</span>
         </p>
 
-        <p class="rating"><strong>Rating:</strong> <Stars :vote="element.vote_average"/></p>
+        <p class="rating"><strong>Rating: </strong> <Stars :vote="element.vote_average"/></p>
 
       </div>
       

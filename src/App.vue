@@ -36,14 +36,14 @@ export default {
   <div class="main-wrapper">
     <Header />
 
-    <Jumperone v-if="store.isSelected" :cover="verifyPath(store.selectedCard)" :card="store.selectedCard" />
+    <Jumperone v-if="store.isSelected" :cover="verifyPath(store.selectedCard)" :card="store.selectedCard" @alfonso="store.isSelected = false" />
   
     <Main
-      :testoprova="store.movieapiURL"
       :moviesList="store.movie"
       :tvsList="store.tv"
       :isNotFound="store.totalResults == 0"
     />
+    
   </div>
 
 </template>

@@ -22,11 +22,11 @@ export default {
   },
   methods: {
     isEmpty(list) {
-      this.message = `${store.apiParams.query} in ${list} non ha fornito nessun risultato`;
+      this.message = `"${store.apiParams.query}" non ha fornito nessun risultato`;
     }
   },
   created() {
-    console.log(store.movie)
+    this.message = "Effettua una ricerca"
   }
 }
 
@@ -38,6 +38,8 @@ export default {
     <div v-if="isNotFound" class="message container">
       <h2>{{ message }}</h2>
     </div>
+
+    <div v-else-if="store.isStart" class="first-search"><h1>{{message}}</h1></div>
 
 
 
@@ -55,6 +57,11 @@ export default {
 
 main {
   color: $font-color;
+  
+  .first-search {
+    text-align: center;
+    margin: 20px 0;
+  }
 }
 
 </style>

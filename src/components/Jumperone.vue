@@ -32,7 +32,7 @@ export default {
 
       
     </div>
-
+    <button @click="$emit('alfonso')">CHIUDIMI</button>
   </div>
 </template>
 
@@ -56,9 +56,11 @@ export default {
   .img-box {
     flex-basis: 50%;
     overflow: hidden;
+    height: 100%;
     img {
       width: 100%;
-      object-fit: cover;
+      height: 100%;
+      object-fit: contain;
     }
   }
   

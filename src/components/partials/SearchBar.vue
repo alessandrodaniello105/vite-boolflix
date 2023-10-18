@@ -28,6 +28,7 @@ export default {
         store.apiParams.query = this.textToSearch;
         
         this.reset();
+        store.isStart = false;
 
         if (this.formatToSearch == 'All') {
           this.getAPI('movie');
