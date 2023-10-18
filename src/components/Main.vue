@@ -41,7 +41,7 @@ export default {
 
     <div v-else>
       <CardsWrapper v-if="!isEmpty(moviesList)" :list="moviesList" :sectionTitle="'Movies'" />
-      <CardsWrapper v-if="!isEmpty(tvsList)" :list="tvsList" :sectionTitle="'TVs series'" />
+      <CardsWrapper v-if="store.totalResults !== 0 " :list="tvsList" :sectionTitle="'TVs series'" />
     </div>
 
 
