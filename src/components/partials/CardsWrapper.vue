@@ -1,25 +1,20 @@
 <script>
 import Card from './Card.vue';
+import SwiperT from './SwiperT.vue';
+
 
 export default {
   name: 'CardsWrapper',
   components: {
-    Card
+    Card,
+    SwiperT
   },
   props: {
     list: Array,
     sectionTitle: String
   },
   methods: {
-    verifyPath(element) {
-      if (element.backdrop_path == null) {
-        return element.poster_path
-      } else if (element.backdrop_path == null && element.poster_path == null) {
-        return 'no image'
-      } else {
-        return element.backdrop_path
-      }
-    }
+
   }
 }
 </script>
@@ -28,9 +23,11 @@ export default {
   <div class="container">
     <h1>{{sectionTitle}}</h1>
 
-    <div class="row">
+    <SwiperT  :element="element" :list="list" />
+
+    <!-- <div class="row">
       <Card v-for="element in list" :key="element.id" :cover="verifyPath(element)" :element="element" />
-    </div>
+    </div> -->
 
   </div>
 </template>
